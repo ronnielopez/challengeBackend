@@ -10,12 +10,6 @@ The Credit Card Validator API is a service that allows you to validate credit ca
   - [Installation](#installation)
 - [Usage](#usage)
   - [Endpoints](#endpoints)
-- [Configuration](#configuration)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -35,7 +29,51 @@ Before using the API, ensure you have the following prerequisites:
 
 ### Installation
 
+To deploy the Credit Card Validator API as a WAR (Web Application Archive) to a Servlet container, follow these steps:
+
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/yourusername/credit-card-validator-api.git
+   
+2. Build the project using Maven:
+   ```bash
+   cd credit-card-validator-api
+    mvn clean install
+
+
+### Endpoints
+
+The Credit Card Validator API provides the following endpoints for credit card validation:
+
+#### Validate Credit Card
+
+- **Endpoint:** `/validate`
+- **HTTP Method:** POST
+- **Description:** Validate a credit card number and receive validation results.
+- **Request Body:**
+
+  ```json
+  { 
+    "cardNumber": "1234567890",
+    "cvc": "123",
+    "month": 12,
+    "year": 2023,
+    "cardHolderName": "John Doe",
+    "issuer": "visa"
+}
+- **Response 200:**
+```json
+{
+    "status": "200 OK",
+    "message": "Success",
+    "data": {
+        "cardNumber": "1234567890",
+        "cvc": "123",
+        "month": "12",
+        "year": "2023",
+        "cardHolderName": "John Doe",
+        "issuer": "visa"
+    },
+    "code": 200
+}
